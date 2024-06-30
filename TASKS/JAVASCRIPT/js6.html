@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .login-container h1 {
+            font-family: 'Monotype Corsiva Regular';
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            position: relative;
+            margin: 5px 0;
+        }
+        .input-container input {
+            width: calc(100% - 30px);
+            padding: 10px;
+            padding-left: 30px;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .input-container .icon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            background-color: #f2f3f5;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3897f0;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Instagram</h1>
+        <div class="input-container">
+            <div class="icon-container">
+                <i class="fa fa-user"></i>
+            </div>
+            <input type="text" id="username" placeholder="Username" required>
+        </div>
+        <div class="input-container">
+            <div class="icon-container">
+                <i class="fa fa-lock"></i>
+            </div>
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <button onclick="login()">Log in</button>
+        <div class="options">
+            <label><input type="checkbox" id="rememberMe"> Remember me</label>
+            <a href="#">Forgot Password?</a>
+        </div>
+    </div>
+    <div class="signup">
+        <p>Don't have an account? <a href="#">Sign up here.</a></p>
+    </div>
+
+    <script>
+        function login() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            if (username === "" || password === "") {
+                alert("Please enter both username and password.");
+                return;
+            }
+            alert("Logging in with username: " + username);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #ffffff;
+      }
+      .container {
+        background: linear-gradient(to bottom, #fceabb, #c577c5);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px;
+      }
+      .register-btn {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        display: block;
+        margin: 10px auto;
+        font-size: 16px;
+      }
+      .register-btn:hover {
+        background-color: darkred;
+      }
+      table {
+        width: 100%;
+      }
+      table td {
+        padding: 10px;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-left: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="text-align: center; color: blue">Registration form</h2>
+      <form id="registrationForm">
+        <table>
+          <tr>
+            <td><b>First Name</b></td>
+            <td>
+              <input type="text" name="firstname" style="width: 77%" />
+              <span class="error" id="firstnameError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Last Name</b></td>
+            <td>
+              <input type="text" name="lastname" style="width: 77%" />
+              <span class="error" id="lastnameError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Email</b></td>
+            <td>
+              <input type="email" name="email" style="width: 77%" />
+              <span class="error" id="emailError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Password</b></td>
+            <td>
+              <input type="password" name="password" style="width: 77%" />
+              <span class="error" id="passwordError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Re-enter Password</b></td>
+            <td>
+              <input type="password" name="repassword" style="width: 77%" />
+              <span class="error" id="repasswordError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Gender</b></td>
+            <td>
+              <input type="radio" name="gender" value="male" /> Male
+              <input type="radio" name="gender" value="female" /> Female
+            </td>
+          </tr>
+          <tr>
+            <td><b>Age</b></td>
+            <td>
+              <input type="number" name="age" style="width: 77%" />
+              <span class="error" id="ageError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Phone Number</b></td>
+            <td>
+              <input type="tel" name="phone" style="width: 77%" />
+              <span class="error" id="phoneError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Address</b></td>
+            <td>
+              <textarea name="address" rows="6" style="width: 77%"></textarea>
+              <span class="error" id="addressError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>State</b></td>
+            <td>
+              <input type="text" name="state" style="width: 77%" />
+              <span class="error" id="stateError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Country</b></td>
+            <td>
+              <select name="country">
+                <option value="">Choose your country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Russia">Russia</option>
+                <option value="China">China</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Languages known</b></td>
+            <td>
+              <input type="checkbox" name="language" value="english" /> English
+              <input type="checkbox" name="language" value="kannada" /> Kannada
+              <input type="checkbox" name="language" value="hindi" /> Hindi
+              <input type="checkbox" name="language" value="telugu" /> Telugu
+              <span class="error" id="languageError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="checkbox" name="declare" /> Hereby I declare all the
+              given details are true
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: right">
+              Log in to
+              <a href="https://www.ethnus.com" target="_blank">Ethnus</a>
+              website
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center">
+              <button type="submit" class="register-btn">Register</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let isValid = true;
+          const form = event.target;
+          const errorElements = form.querySelectorAll(".error");
+          errorElements.forEach(
+            (errorElement) => (errorElement.textContent = "")
+          );
+          form.querySelectorAll("input, textarea, select").forEach((input) => {
+            if (!input.value.trim()) {
+              const errorElement = document.getElementById(
+                input.name + "Error"
+              );
+              if (errorElement) {
+                errorElement.textContent = "POOR";
+              }
+              isValid = false;
+            }
+          });
+          const password = form.querySelector('input[name="password"]').value;
+          const repassword = form.querySelector(
+            'input[name="repassword"]'
+          ).value;
+          const repasswordError = document.getElementById("repasswordError");
+          if (!repassword.trim()) {
+            repasswordError.textContent = "POOR";
+            isValid = false;
+          } else if (password !== repassword) {
+            repasswordError.textContent = "MISMATCH";
+            isValid = false;
+          }
+
+          if (isValid) {
+            form.submit();
+          }
+        });
+    </script>
+  </body>
+</html>

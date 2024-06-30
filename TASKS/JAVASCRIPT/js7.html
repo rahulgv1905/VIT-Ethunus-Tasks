@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #train {
+            position: relative;
+            left: 0;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img id="train" src="train.png" alt="Train">
+    <h2 style="color:darkblue">Click the following buttons to handle animation</h2>
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+    <script>
+        let train = document.getElementById('train');
+        let position = 0;
+        let interval;
+
+        function startAnimation() {
+            if (!interval) {
+                interval = setInterval(moveTrain, 10);
+            }
+        }
+        function stopAnimation() {
+            clearInterval(interval);
+            interval = null;
+        }
+        function moveTrain() {
+            position += 1;
+            train.style.left = position + 'px';
+            if (position > window.innerWidth) {
+                position = -train.width;
+            }
+        }
+    </script>
+</body>
+</html>
